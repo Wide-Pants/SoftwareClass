@@ -12,7 +12,12 @@ public class BookList {
 				throw new Exception("중복 발견");
 			}
 		}
-		bookList.add(newBook);
+		//정렬된 위치에 삽입 추후 이진트리를 위해 미리 정렬
+		int index = 0;
+        while (index < bookList.size() && bookList.get(index).id < newBook.id) {
+            index++;
+        }
+        bookList.add(index, newBook); 
 		System.out.println(String.format("Book {id: '%d', 제목: '%s', 저자: '%s', 출판년도: %d}를 추가하였습니다.", newBook.id,
 				newBook.title, newBook.author, newBook.pubYear));
 		return;
