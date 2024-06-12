@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'javac -encoding UTF-8 -d classes SoftwareClass/src/Book.java'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+    }post{
+      always{
+        archiveArtifacts 'test_result.txt'
+      }
+      failure{
+        echo 'Build or test Failed'
+      }success{
+        echo 'Build and test succeeded'
+      }
+    }
+}
