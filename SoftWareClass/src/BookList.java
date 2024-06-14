@@ -3,8 +3,22 @@ import java.util.List;
 
 public class BookList {
 
-	private static List<Book> bookList = new ArrayList<>();
+	private List<Book> bookList = new ArrayList<>();
 
+	public class Book {
+		int id;// 아이디
+		String title;// 제목
+		String author;// 저자
+		int pubYear;// 발행연도
+		
+		public Book(int id, String title, String author, int pubYear) {
+	        this.id = id;
+	        this.title = title;
+	        this.author = author;
+	        this.pubYear = pubYear;
+	    }
+	}
+	
 	public void addBook(Book newBook) throws Exception {
 		for (Book book : bookList) {
 			if (book.id == newBook.id) {// 중복 ID 값에 대해 예외처리
