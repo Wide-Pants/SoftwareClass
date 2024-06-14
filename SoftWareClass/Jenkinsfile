@@ -9,12 +9,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'javac -encoding UTF-8 -d classes SoftwareClass/src/Book.java'
+                sh 'javac -encoding UTF-8 -d classes SoftwareClass/src/BookList.java'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+            	def classpath = "classes:lib/*:path/to/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
+              	sh "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
             }
         }
     }post{
