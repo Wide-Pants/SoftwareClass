@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BookList {
 
-	//빌드 테스트하려고 주석 추
+	//빌드 테스트하려고 주석 추가했다!
 	
 	private List<Book> bookList = new ArrayList<>();
 	public class Book {
