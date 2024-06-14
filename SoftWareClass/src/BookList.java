@@ -3,8 +3,9 @@ import java.util.List;
 
 public class BookList {
 
+	//빌드 테스트하려고 주석 추
+	
 	private List<Book> bookList = new ArrayList<>();
-
 	public class Book {
 		int id;// 아이디
 		String title;// 제목
