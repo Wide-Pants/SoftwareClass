@@ -9,14 +9,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-              	sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/*.java'
+              	sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/BookList.java
+              	javac -encoding UTF-8 -d classes SoftWareClass/src/PerformanceTest.java'
             }
         }
         stage('Test') {
             steps {
                 script {
-                    def classpath = "/Users/gang-yunho/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
-                    sh "java -cp $classpath --classpath classes --scan-classpath > test_results.txt 2>&1"
+                    def classpath = "classes:/Users/gang-yunho/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
+                    sh "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt 2>&1"
                 }
             }
         }
