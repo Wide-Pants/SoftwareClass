@@ -11,14 +11,15 @@ public class BookList {
 		private String author;// 저자
 		private int pubYear;// 발행연도ㄴ
 		
+		public Book() {
+		      this.id = -1;
+		       this.title = "";
+		       this.author = "";
+		       this.pubYear = -1;
+		}
+		      
 		public Book(int id, String title, String author, int pubYear) {
 	        this.id = id;
-	        this.title = title;
-	        this.author = author;
-	        this.pubYear = pubYear;
-	    }
-		public Book(String title, String author, int pubYear) {
-	        this.id = bookList.size();
 	        this.title = title;
 	        this.author = author;
 	        this.pubYear = pubYear;
