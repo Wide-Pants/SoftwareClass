@@ -36,7 +36,7 @@ pipeline {
                     git config user.email "ajtwoddl1236@naver.com"
                     git add test_results.txt performance_results.txt
                     git commit -m "Add build and test results"
-                    git push https://Wide-Pants@https://github.com/Wide-Pants/SoftwareClass.git HEAD:master
+                    git push https://Wide-Pants@github.com/Wide-Pants/SoftwareClass.git HEAD:master
                     '''
                 }
             }
