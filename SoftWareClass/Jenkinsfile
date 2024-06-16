@@ -39,6 +39,14 @@ pipeline {
             echo 'Build or test failed'
         }
         success {
+        script {
+                emailext (
+                    to: 'ajtwoddl1236@naver.com',
+                    subject: "Successful Pipeline: softwareClass",
+                    body: "Good news! build succeeded.",
+                    attachmentsPattern: 'test_results.txt, performance_results.txt'
+                )
+            }
             echo 'Build and test succeeded'
         }
     }
