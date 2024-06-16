@@ -9,7 +9,7 @@ public class BookList {
 		private int id;// 아이디
 		private String title;// 제목
 		private String author;// 저자
-		private int pubYear;// 발행연도ㄴ
+		private int pubYear;// 발행연도
 		
 		public Book() {
 		      this.id = -1;
