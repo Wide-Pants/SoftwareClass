@@ -96,7 +96,7 @@ public class BookList {
 		throw new Exception("데이터 없음");
 	}
 
-	public void searchBook_bs(int id) throws Exception {
+	public void search_bs(int id) throws Exception {
 		int leftId = 0;
 		int rightId = bookList.size() - 1;
 
