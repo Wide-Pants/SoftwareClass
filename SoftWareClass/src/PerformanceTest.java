@@ -10,7 +10,7 @@ public class PerformanceTest {
         Random random = new Random();
 
         // 도서 목록 채우기
-        for (int i = 0; i < Books; i++) {
+        for (int i = 1; i <= Books; i++) {
             BookList.Book book = bookList.new Book(i, "Test" + i, "Test", 2024);
             bookList.addBook(book);
         }
@@ -45,9 +45,8 @@ public class PerformanceTest {
         }
         double searchBook_BSAverageTime = searchBook_BSTotalTime / (double) Tests;
         
-        System.out.println("searchBook 평균 실행 시간: " + searchBook_NormalAverageTime + " ms");
-
-        System.out.println("search_bs 평균 실행 시간: " + searchBook_BSAverageTime + " ms");
+        System.out.println("searchBook 평균 실행 시간: " + searchBook_NormalAverageTime + "ms");
+        System.out.println("search_bs 평균 실행 시간: " + searchBook_BSAverageTime + "ms");
 
         // 비교 결과 출력
         System.out.println("search_bs가 searchBook보다 평균 " + (searchBook_NormalAverageTime / searchBook_BSAverageTime) + "배 빠릅니다.");
