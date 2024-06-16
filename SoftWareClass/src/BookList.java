@@ -60,7 +60,7 @@ public class BookList {
 
 	public void viewBookList() throws Exception {
 		if (bookList.isEmpty()) {// arraylist 에 아무 값도 존재하지 않으면 예외처리
-			System.out.print("리스트에 도서가 존재하지 않습니다.");
+			System.out.println("리스트에 도서가 존재하지 않습니다.");
 			throw new Exception("빈 리스트");
 		}
 		System.out.print("전체 조회:\n");
@@ -73,7 +73,7 @@ public class BookList {
 	public void searchBook(int id) throws Exception {
 		for (Book book : bookList) {
 			if (book.getId() == id) {
-				System.out.println(String.format("Book {id: %d, 제목: %s, 저자: %s, 연도: %d}를 찾았습니다.", id,
+				System.out.println(String.format("Book {id: '%d', 제목: '%s', 저자: '%s', 연도: %d}를 찾았습니다.", id,
 				book.getTitle(), book.getAuthor(), book.getPubYear()));
 				return;
 			}
@@ -97,7 +97,7 @@ public class BookList {
 		throw new Exception("데이터 없음");
 	}
 
-	public void search_bs(int id) throws Exception {
+	public void search_bs(int id) throws Exception{
 		int leftId = 0;
 		int rightId = bookList.size() - 1;
 
