@@ -10,39 +10,40 @@ public class PerformanceTest {
         Random random = new Random();
 
         // 도서 목록 채우기
-        for (int i = 1; i <= Books; i++) {
+        for (int i = 0; i < Books; i++) {
             BookList.Book book = bookList.new Book(i, "Test" + i, "Test", 2024);
             bookList.addBook(book);
         }
+        
+        long startTime, endTime;
 
         // searchBook 성능 측정
-        long searchBook_normalTotalTime = 0;
+        startTime = System.currentTimeMillis();
         for (int i = 0; i < Tests; i++) {
-            int id = random.nextInt(Books);
-            long startTime = System.currentTimeMillis();
+            int id = random.nextInt(Books*2);
             try {
                 bookList.searchBook(id);
             } catch (Exception e) {
                 // 검색에 실패한 경우 무시
             }
-            long endTime = System.currentTimeMillis();
-            searchBook_normalTotalTime += (endTime - startTime);
         }
+        endTime = System.currentTimeMillis();
+        long searchBook_normalTotalTime = (endTime - startTime);
         double searchBook_NormalAverageTime = searchBook_normalTotalTime / (double) Tests;
 
         // search_bs 성능 측정
-        long searchBook_BSTotalTime = 0;
+        startTime = System.currentTimeMillis();
         for (int i = 0; i < Tests; i++) {
-            int id = random.nextInt(Books);
-            long startTime = System.currentTimeMillis();
+            int id = random.nextInt(Books*2);
+            //long startTime = System.currentTimeMillis();
             try {
                 bookList.search_bs(id);
             } catch (Exception e) {
                 // 검색에 실패한 경우 무시
             }
-            long endTime = System.currentTimeMillis();
-            searchBook_BSTotalTime += (endTime - startTime);
         }
+        endTime = System.currentTimeMillis();
+        long searchBook_BSTotalTime = (endTime - startTime);
         double searchBook_BSAverageTime = searchBook_BSTotalTime / (double) Tests;
         
         System.out.println("searchBook 평균 실행 시간: " + searchBook_NormalAverageTime + "ms");
