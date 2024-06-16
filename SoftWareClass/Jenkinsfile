@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-              	sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/BookList.java'
-            	sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/PerformanceTest.java'
+              	sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/*.java'
             }
         }
         stage('Test') {
