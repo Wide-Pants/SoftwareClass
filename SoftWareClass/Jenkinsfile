@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-               sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/*.java'
+               sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/BookList.java'
             }
         }
         stage('Test') {
@@ -22,6 +22,7 @@ pipeline {
         }
         stage('PerformanceTest') {
             steps {
+            sh 'javac -encoding UTF-8 -d classes SoftWareClass/src/PerformanceTest.java'
                 script {
                     def classpath = "classes"
                     sh "java -cp ${classpath} PerformanceTest > performance_results.txt 2>&1"
