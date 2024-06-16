@@ -27,6 +27,18 @@ pipeline {
                     sh "java -cp ${classpath} PerformanceTest > performance_results.txt"
                 }
             }
+        }stage('Commit and Push Results') {
+            steps {
+                script {
+                    sh '''
+                    git config user.name "Wide-Pants"
+                    git config user.email "ajtwoddl1236@naver.com"
+                    git add test_results.txt performance_results.txt
+                    git commit -m "Add build and test results"
+                    git push https://Wide-Pants@https://github.com/Wide-Pants/SoftwareClass.git HEAD:master
+                    '''
+                }
+            }
         }
     }
     
