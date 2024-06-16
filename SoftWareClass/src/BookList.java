@@ -42,7 +42,7 @@ public class BookList {
 	public void addBook(Book newBook) throws Exception {
 		for (Book book : bookList) {
 			if (book.getId() == newBook.getId()) {// 중복 ID 값에 대해 예외처리
-				System.out.println(String.format("해당 ID(%d)는 이미 존재합니다.", newBook.id));
+				System.out.println(String.format("해당 ID(%d)는 이미 존재합니다.", newBook.getId()));
 				throw new Exception("중복 발견");
 			}
 		}
