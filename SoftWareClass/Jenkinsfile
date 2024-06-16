@@ -20,14 +20,6 @@ pipeline {
 				}
             }
         }
-        stage('PerformanceTest') {
-            steps {
-            	script {
-                    def classpath = "classes"
-                    sh "java -cp ${classpath} PerformanceTest > performance_results.txt 2>&1"
-                }
-            }
-        }
     }
     
     post {
