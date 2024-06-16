@@ -27,7 +27,8 @@ pipeline {
                     sh "java -cp ${classpath} PerformanceTest > performance_results.txt"
                 }
             }
-        }stage('Commit and Push Results') {
+        }
+        stage('Commit and Push Results') {
             steps {
                 script {
                     sh '''
