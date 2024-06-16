@@ -28,25 +28,12 @@ pipeline {
                 }
             }
         }
-        stage('Commit and Push Results') {
-            steps {
-                script {
-                    sh '''
-                    git config user.name "Wide-Pants"
-                    git config user.email "ajtwoddl1236@naver.com"
-                    git add test_results.txt performance_results.txt
-                    git commit -m "Add build and test results"
-                    git push https://Wide-Pants@github.com/Wide-Pants/SoftwareClass.git HEAD:master
-                    '''
-                }
-            }
-        }
     }
     
     post {
         always {
-            archiveArtifacts artifacts: 'test_results.txt'
-            archiveArtifacts artifacts: 'performance_results.txt'
+            archiveArtifacts 'test_results.txt'
+            archiveArtifacts 'performance_results.txt'
         }
         failure {
             echo 'Build or test failed'
