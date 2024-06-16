@@ -16,16 +16,23 @@ pipeline {
             steps {
                 script {
     				def classpath = "classes:/Users/gang-yunho/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
-    				sh "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
+    				sh "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt 2>&1"
 				}
+            }
+        }stage('Run PerformanceTest') {
+            steps {
+                script {
+                    def classpath = "classes"
+                    sh "java -cp ${classpath} PerformanceTest > performance_results.txt 2>&1"
+                }
             }
         }
     }
     
     post {
         always {
-            archiveArtifacts artifacts: 'build_results.txt'
             archiveArtifacts artifacts: 'test_results.txt'
+            archiveArtifacts artifacts: 'performance_results.txt'
         }
         failure {
             echo 'Build or test failed'
