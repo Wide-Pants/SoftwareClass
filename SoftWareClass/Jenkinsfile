@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-              	sh 'javac -encoding UTF-8 -d classes /Users/gang-yunho/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar SoftWareClass/src/*.java'
+              	sh 'javac -encoding UTF-8 -d classes -cp /Users/gang-yunho/eclipse/plugins/junit-platform-console-standalone-1.7.1.jar SoftWareClass/src/*.java'
             }
         }
         stage('Test') {
